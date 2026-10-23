@@ -1,4 +1,4 @@
-const CACHE = "bolsillo-v2";
+const CACHE = "bolsillo-v3";
 const SHELL = ["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon.png",
   "/sebas-fit/css/fonts.css",
   "/sebas-fit/css/lock.css",
@@ -60,7 +60,7 @@ self.addEventListener("fetch", e => {
   }
   // código y páginas: la red si responde pronto (versión nueva); con señal débil o sin señal, lo guardado
   e.respondWith(
-    withTimeout(fetch(req).then(res => { const cp = res.clone(); caches.open(CACHE).then(c => c.put(req, cp)).catch(() => {}); return res; }), 3500)
+    withTimeout(fetch(req,{cache:"no-cache"}).then(res => { const cp = res.clone(); caches.open(CACHE).then(c => c.put(req, cp)).catch(() => {}); return res; }), 3500)
       .catch(() => caches.match(req, { ignoreSearch: true }).then(r => r || (req.mode === "navigate" ? caches.match("./index.html") : Response.error())))
   );
 });
