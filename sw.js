@@ -1,4 +1,4 @@
-const CACHE = "bolsillo-v1";
+const CACHE = "bolsillo-v2";
 const SHELL = ["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./apple-touch-icon.png","./favicon.png",
   "/sebas-fit/css/fonts.css",
   "/sebas-fit/css/lock.css",
